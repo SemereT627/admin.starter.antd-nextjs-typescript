@@ -1,24 +1,19 @@
 import { Menu, Layout } from "antd";
 
 import React, { useEffect, useState } from "react";
-import {
-  ContactsOutlined,
-  DashboardOutlined,
-  DatabaseOutlined,
-  UserOutlined,
-  ApartmentOutlined,
-  UsergroupAddOutlined,
-  GroupOutlined,
-  MenuOutlined,
-  TagsOutlined,
-  OrderedListOutlined,
-  IdcardOutlined,
-  ProfileOutlined,
-  UserAddOutlined,
-  TableOutlined,
-  PullRequestOutlined,
-} from "@ant-design/icons";
+import { MenuOutlined } from "@ant-design/icons";
+
+import { RxDashboard } from "react-icons/rx";
+import { FaHandHoldingUsd, FaHandsHelping } from "react-icons/fa";
+import { MdOutlineVolunteerActivism } from "react-icons/md";
+import { RiCalendarEventLine } from "react-icons/ri";
+import { MdOutlinePermContactCalendar } from "react-icons/md";
+import { HiOutlineUsers } from "react-icons/hi";
+
 import { useRouter } from "next/router";
+import Image from "next/image";
+
+import WGLogo from "../../../public/static/images/wg-logo.png";
 
 const { Sider } = Layout;
 
@@ -77,22 +72,22 @@ const DashboardSidebar = ({ collapsed }: Props) => {
    * destructured variables
    */
   const items = [
-    getItem("Dashboard", "/", <DashboardOutlined />),
-    getItem("Requisitions", "requisitions", <PullRequestOutlined />),
-    getItem("Warehouses", "warehouses", <GroupOutlined />),
-    getItem("Shelves", "shelves", <MenuOutlined />),
-    getItem("Goods Receiving Note", "goods-receiving-notes", <TableOutlined />),
-    getItem("Orders", "orders", <DatabaseOutlined />),
-    getItem("Self Pickup Orders", "self-pickup-orders", <ContactsOutlined />),
-    getItem("Dispatch Note", "dispatch-notes", <TagsOutlined />),
-    getItem("Vendors", "vendors", <UserOutlined />),
-    getItem("Products", "products", <ApartmentOutlined />),
-    getItem("Customers", "customers", <UsergroupAddOutlined />),
-    getItem("Reports", "reports", <OrderedListOutlined />, [
-      getItem("Bin Card", "reports/bin-card", <ProfileOutlined />),
-      getItem("Stock Card", "reports/stock-card", <IdcardOutlined />),
-    ]),
-    getItem("Users", "users", <UserAddOutlined />),
+    getItem("Dashboard", "/", <RxDashboard size={18} />),
+    getItem("Beneficiary", "beneficiary", <FaHandHoldingUsd size={18} />),
+    getItem(
+      "Volunteers",
+      "volunteer",
+      <MdOutlineVolunteerActivism size={18} />
+    ),
+    getItem("Events", "warehouses", <RiCalendarEventLine size={18} />),
+    getItem("Stories", "shelves", <MenuOutlined size={18} />),
+    getItem("Donors", "goods-receiving-notes", <FaHandsHelping size={18} />),
+    getItem("Contacts", "orders", <MdOutlinePermContactCalendar size={18} />),
+    getItem(
+      "Users Management",
+      "self-pickup-orders",
+      <HiOutlineUsers size={18} />
+    ),
   ];
 
   return (
@@ -108,12 +103,7 @@ const DashboardSidebar = ({ collapsed }: Props) => {
           collapsed ? "mt-8" : "mt-0"
         } bg-white p-2.5 mb-5 logo flex justify-center transition-all`}
       >
-        {/* Logo */}
-        {/* <LazyLoadImage
-          src={ashewaLogo}
-          placeholderSrc={ashewaLogoPlaceholder}
-          width={"100%"}
-        /> */}
+        <Image src={WGLogo} alt="WG-Logo" height={collapsed ? 40 : 100} />
       </div>
 
       <Menu
